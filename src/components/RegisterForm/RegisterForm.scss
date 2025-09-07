@@ -1,0 +1,121 @@
+.register-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &__input {
+        width: 100%;
+        font-size: 18px;
+        line-height: 24px;
+        color: #000000;
+        padding: 15px 15px 15px 51px;
+        border-radius: 8px;
+        border: 1px solid rgba(0, 0, 0, 0.4);
+        transition: border-color 0.3s ease-in;
+        outline: none;
+
+        &::placeholder {
+            color: rgba(0, 0, 0, 0.4);
+        }
+
+
+    }
+
+    &__label {
+        margin: 0 0 12px;
+        position: relative;
+
+        &:hover,
+        &:focus-within {
+            .register-form__input {
+                border-color: #B4A9FF;
+            }
+
+            .register-form__icon {
+                color: #B4A9FF;
+            }
+        }
+
+        &:last-of-type {
+            margin: 0 0 24px;
+        }
+
+        &:has(.register-form__label__error-text) {
+            margin: 0 0 24px;
+
+            .register-form__input {
+                border-color: rgba(255, 117, 117, 1);
+            }
+
+            .register-form__icon {
+                color: rgba(255, 117, 117, 1);
+            }
+        }
+    }
+
+    &__icon {
+        position: absolute;
+        top: 50%;
+        left: 16px;
+        transform: translateY(-50%);
+        opacity: 0.4;
+        transition: color 0.3s ease-in;
+    }
+
+    &__button {
+        margin: 0 0 8px;
+    }
+
+    &__label__error-text {
+        color: rgba(255, 117, 117, 1);
+        position: absolute;
+        bottom: -24px;
+        left: 0;
+
+        @media (max-width: 767px) {
+            font-size: 14px;
+            line-height: 18px;
+            bottom: -16px;
+        }
+    }
+
+    &__error {
+        color: rgba(255, 117, 117, 1);
+        text-align: center;
+        margin: 0 0 12px;
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    &__success {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        align-items: center;
+
+        &-title {
+            margin: 0;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 32px;
+        }
+
+        &-text {
+            font-size: 18px;
+            line-height: 24px;
+            margin: 0;
+            text-align: center;
+        }
+
+        &-button {
+            width: 100%;
+        }
+    }
+
+    &__title {
+        font-size: 24px;
+        line-height: 32px;
+        font-weight: 700;
+        margin: 0 0 24px;
+    }
+}

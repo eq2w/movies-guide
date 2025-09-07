@@ -1,0 +1,43 @@
+.footer {
+    padding: 42px 0;
+
+    @media (max-width: 767px) {
+        padding: 24px 0;
+    }
+
+    &__socials {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        justify-content: flex-end;
+
+        @media (max-width: 767px) {
+            justify-content: flex-start;
+        }
+
+        &-link {
+            display: flex;
+
+            @media (max-width: 767px) {
+                justify-items: flex-start;
+            }
+
+            &:hover,
+            &:focus-visible {
+                svg {
+                    color: #B4A9FF;
+                }
+            }
+
+            svg {
+                color: #ffffff;
+                transition: color 0.3s ease-in;
+                @media (max-width: 767px) {
+                    width: 24px;
+                    height: 24px;
+
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,53 @@
+.trailer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 40;
+    background: #0A0B0BE5;
+
+    &__window {
+        width: 960px;
+        aspect-ratio: 16/9;
+        display: flex;
+        position: relative;
+    }
+
+    &__button-close {
+        position: absolute;
+        top: 0;
+        right: -24px;
+        background-color: #ffffff;
+        padding: 12px;
+        border: none;
+        transform: translateX(100%);
+        color: #000000;
+
+        @media (max-width: 767px) {
+            right: 8px;
+            top: 8px;
+            transform: unset;
+            padding: 4px;
+
+            svg {
+                scale: 0.72;
+            }
+
+            @media (orientation: landscape) {
+                right: 16px;
+                top: 16px;
+            }
+        }
+    }
+
+    &__loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

@@ -1,0 +1,63 @@
+.films-genre {
+    padding: 64px 0;
+
+    @media (max-width: 767px) {
+        padding: 16px 0 40px;
+    }
+
+    &__menu {
+        display: flex;
+        align-items: center;
+        margin: 0 0 64px;
+        gap: 16px;
+
+        @media (max-width: 767px) {
+            gap: 8px;
+            margin: 0 0 40px;
+        }
+    }
+
+    &__title {
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 56px;
+        color: #ffffff;
+        margin: 0;
+
+        @media (max-width: 767px) {
+            font-size: 24px;
+            line-height: 32px;
+        }
+    }
+
+    &__link {
+        display: flex;
+
+        @media (max-width: 767px) {
+            svg {
+                width: 32px;
+                height: 32px;
+            }
+        }
+
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 64px;
+
+        @media (max-width: 767px) {
+            gap: 24px;
+        }
+    }
+
+    &__button {
+        margin: 64px auto 0;
+        display: flex;
+
+        @media (max-width: 767px) {
+            margin: 40px auto 0;
+        }
+    }
+}

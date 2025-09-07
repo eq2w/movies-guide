@@ -1,0 +1,63 @@
+.auth-form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 20;
+
+
+    &__wrapper {
+        position: absolute;
+        background-color: #ffffff;
+        min-width: 420px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 24px;
+        z-index: 25;
+        padding: 64px 40px 48px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @media (max-width: 767px) {
+            min-width: 335px;
+            padding: 64px 20px 16px;
+        }
+    }
+
+    &__icon {
+        margin: 0 0 40px;
+
+        @media (max-width: 767px) {
+            width: 132px;
+            height: 30px;
+            margin: 0 0 32px;
+        }
+    }
+
+    &__button {
+        width: 100%;
+        padding: 16px 0;
+    }
+
+    &__button-close {
+        position: absolute;
+        top: 0;
+        right: -24px;
+        background-color: #ffffff;
+        padding: 12px;
+        border: none;
+        transform: translateX(100%);
+        color: #000000;
+        @media (max-width: 767px) {
+            right: 8px;
+            top: 8px;
+            transform: unset;
+            background-color: transparent;
+        }
+    }
+
+}

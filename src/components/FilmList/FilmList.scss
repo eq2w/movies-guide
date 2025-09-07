@@ -1,0 +1,131 @@
+.films {
+
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 64px 40px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+
+        @media (max-width: 767px) {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        &--number {
+            .films__item {
+                counter-increment: film;
+
+                &::before {
+                    content: counter(film);
+                    position: absolute;
+                    top: -12px;
+                    left: -12px;
+                    font-weight: 700;
+                    font-size: 24px;
+                    line-height: 32px;
+                    color: #6A5DC2;
+                    padding: 8px 24px;
+                    background-color: #FFFFFF;
+                    border-radius: 50px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 1;
+                }
+            }
+        }
+
+        &--slide {
+            @media (max-width: 767px) {
+                display: flex;
+                flex-wrap: nowrap;
+                padding: 40px 20px 32px;
+                margin: 0 -20px;
+                overflow-x: auto;
+                overflow-y: visible;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
+
+            .films__item {
+                @media (max-width: 767px) {
+                    flex: 0 0 auto;
+                    width: 224px;
+                }
+            }
+        }
+    }
+
+    &__item {
+        position: relative;
+    }
+
+    &__card {
+        display: flex;
+        height: 100%;
+        min-height: 336px;
+        box-shadow: 0px 0px 80px 0px rgba(255, 255, 255, 0.33);
+        border-radius: 16px;
+        z-index: 0;
+        border: 1px solid transparent;
+        transition: border-color ease-in 0.3s;
+
+        @media (max-width: 767px) {
+            box-shadow: 0px 0px 30px 0px rgba(255, 255, 255, 0.33);
+        }
+
+        &-link {
+            display: flex;
+            width: 100%;
+        }
+
+        &-image {
+            border-radius: 16px;
+        }
+
+        &--no-image {
+            .films__card-link {
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            }
+
+            .films__card-text {
+                font-size: 28px;
+                line-height: 32px;
+                color: #FFFFFF;
+            }
+        }
+
+        &-btn {
+            position: absolute;
+            padding: 8px;
+            right: -20px;
+            top: -20px;
+            background-color: #FFFFFF;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity ease-in 0.3s;
+            color: #000000;
+        }
+
+        &:hover,
+        &:focus-visible {
+            border: 1px solid rgba(255, 255, 255, 1);
+
+            .films__card-btn {
+                opacity: 1;
+                pointer-events: all;
+            }
+
+        }
+    }
+
+    &__loader {
+        margin: 0 auto;
+    }
+}

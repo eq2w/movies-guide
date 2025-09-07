@@ -1,0 +1,75 @@
+.film-info {
+
+    &__title {
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 48px;
+        color: #ffffff;
+        margin: 0 0 64px;
+
+        @media (max-width: 767px) {
+            font-size: 24px;
+            line-height: 32px;
+            margin: 0 0 40px;
+        }
+
+    }
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        @media (max-width: 767px) {
+            gap: 12px;
+        }
+    }
+
+    &__property {
+        display: grid;
+        grid-template-columns: 320px auto;
+        gap: 8px;
+
+        @media (max-width: 767px) {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        &-name,
+        &-value {
+            font-size: 18px;
+            line-height: 24px;
+            color: #ffffff;
+
+            @media (max-width: 767px) {
+                font-size: 14px;
+                line-height: 20px;
+            }
+        }
+
+        &-name {
+            position: relative;
+            white-space: nowrap;
+            display: flex;
+
+            @media (max-width: 767px) {
+                color: #FFFFFF80;
+            }
+        }
+
+        &-name::after {
+            content: '........................................................................';
+            overflow: hidden;
+            right: 0;
+            top: 0;
+            display: block;
+            padding: 0 0 0 8px;
+
+            @media (max-width: 767px) {
+                display: none;
+            }
+        }
+
+    }
+}
