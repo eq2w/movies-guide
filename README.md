@@ -24,7 +24,7 @@ npm run preview
 - React		
 - React Router
 - React Query
-- React Redux
+- Redux Toolkit
 - React Hook Form
 - Zod
 - TypeScript
