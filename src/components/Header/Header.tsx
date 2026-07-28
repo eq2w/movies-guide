@@ -20,14 +20,14 @@ const Header = () => {
     const handleAuthOpen = () => {
         dispatch(openAuth())
     }
-    const [searchInput, setSeacrhInput] = useState('')
+    const [searchInput, setSearchInput] = useState('')
     const [isSearchOpen, setIsSearchOpen] = useState(false)
 
-    const handleSearhInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSeacrhInput(e.target.value)
+    const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchInput(e.target.value)
     }
     const handleClickToResultSearch = () => {
-        setSeacrhInput('')
+        setSearchInput('')
         setIsSearchOpen(false)
     }
 
@@ -52,7 +52,7 @@ const Header = () => {
                             </div>
                             <div className={`header__custom-input ${isSearchOpen ? 'header__custom-input--open' : ''}`} >
                                 <Button onClick={handleOpenSearch} className='header__search-icon' ariaLabel='Поиск фильмов'><SvgIcon icon={IconSearch} width={24} height={24} /></Button>
-                                <TextField className='header__search' placeholder='Поиск' value={searchInput ?? ''} onChange={handleSearhInput} />
+                                <TextField className='header__search' placeholder='Поиск' value={searchInput ?? ''} onChange={handleSearchInput} />
                                 <Button className='header__search-icon header__search-icon--close' onClick={handleClickToResultSearch} ariaLabel='Закрыть поиск фильмов'><SvgIcon icon={IconClose} width={24} height={24} /></Button>
                                 <div className={`header__search-result ${searchInput ? 'header__search-result--open' : ''}`}>
                                     <FetchFilmsByName onClick={handleClickToResultSearch} name={searchInput ? searchInput : ''} />

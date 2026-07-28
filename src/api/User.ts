@@ -14,19 +14,18 @@ export function fetchMe(): Promise<User> {
         method: "GET",
         credentials: 'include',
     })
-        .then(validateResponce)
+        .then(validateResponse)
         .then((response) => response.json())
         .then(data => UserSchema.parse(data))
 }
 
 
 
-export async function validateResponce(responce: Response): Promise<Response> {
-    if (!responce.ok) {
-        throw new Error(await responce.text())
+export async function validateResponse(response: Response): Promise<Response> {
+    if (!response.ok) {
+        throw new Error(await response.text())
     }
-
-    return responce
+    return response
 }
 
 export function registerUser(email: string, password: string, name: string, surname: string): Promise<void> {
@@ -36,7 +35,7 @@ export function registerUser(email: string, password: string, name: string, surn
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ email, password, name, surname })
-    }).then(validateResponce).then(() => undefined)
+    }).then(validateResponse).then(() => undefined)
 }
 
 
@@ -48,14 +47,14 @@ export function loginUser(email: string, password: string): Promise<void> {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password })
-    }).then(validateResponce).then(() => undefined)
+    }).then(validateResponse).then(() => undefined)
 }
 
 export function logoutUser(): Promise<void> {
     return fetch("https://cinemaguide.skillbox.cc/auth/logout", {
         method: "GET",
         credentials: 'include',
-    }).then(validateResponce).then(() => undefined)
+    }).then(validateResponse).then(() => undefined)
 }
 
 export function addFilmToFavorites(id: string): Promise<void> {
@@ -66,5 +65,5 @@ export function addFilmToFavorites(id: string): Promise<void> {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({ id })
-    }).then(validateResponce).then(() => undefined)
+    }).then(validateResponse).then(() => undefined)
 }

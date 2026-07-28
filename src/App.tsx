@@ -29,7 +29,7 @@ function App() {
     if (meQuery.status === 'success') {
       dispatch(setUser(meQuery.data))
     }
-  })
+  }, [meQuery.status])
 
   return (
     <BrowserRouter>

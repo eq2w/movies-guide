@@ -6,6 +6,7 @@ import { queryClient } from '../../api/QueryClient'
 import Hero from '../../components/Hero/Hero'
 import { Loader } from '../../components/Loader/Loader'
 import FilmInfo from '../../components/FilmInfo/FilmInfo'
+import { QueryError } from '../../components/QueryError/QueryError'
 
 function FilmPage() {
     const { filmId } = useParams()
@@ -34,7 +35,7 @@ function FilmPage() {
                 </section>
             )
         case "error":
-            return <Loader />
+            return <QueryError onRetry={filmIdQuery.refetch} />
     }
 }
 

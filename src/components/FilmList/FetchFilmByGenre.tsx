@@ -4,7 +4,7 @@ import { fetchFilmsbyFilter } from '../../api/Films'
 import FilmList from './FilmList'
 import { Loader } from '../Loader/Loader'
 import { useEffect } from 'react'
-import Button from '../../ui/Button/Button'
+import { QueryError } from '../QueryError/QueryError'
 
 interface TProps {
     count: number,
@@ -24,19 +24,15 @@ const FetchFilmsByGenre = ({ count, page, onReached }: TProps) => {
         if (filmsByGenreQuery.status === 'success' && filmsByGenreQuery.data.length < count && onReached) {
             onReached()
         }
-    })
+    }, [filmsByGenreQuery.status, filmsByGenreQuery.data?.length])
+    
     switch (filmsByGenreQuery.status) {
         case "pending":
             return <Loader />
         case "success":
             return <FilmList films={filmsByGenreQuery.data} />
         case "error":
-            return (
-                <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', gap: '20px' }}>
-                    <span style={{ fontSize: '24px', color: '#ffffff' }}>Ошибка загрузки</span>
-                    <Button className="btn btn--error" onClick={filmsByGenreQuery.refetch}>Повторить попытку</Button>
-                </div>
-            )
+            return <QueryError onRetry={filmsByGenreQuery.refetch}/>
     }
 }
 

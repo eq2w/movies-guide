@@ -1,8 +1,7 @@
 import { z } from 'zod'
-import { validateResponce } from './User'
+import { validateResponse } from './User'
 
-
-export const FilmShema = z.object({
+export const FilmSchema = z.object({
     id: z.number(),
     title: z.string(),
     originalTitle: z.string(),
@@ -31,44 +30,44 @@ export const FilmShema = z.object({
     awardsSummary: z.string().nullable(),
 })
 
-export type Film = z.infer<typeof FilmShema>
+export type Film = z.infer<typeof FilmSchema>
 
-export const FilmsListShema = z.array(FilmShema)
+export const FilmsListSchema = z.array(FilmSchema)
 
-export type FilmsList = z.infer<typeof FilmsListShema>
+export type FilmsList = z.infer<typeof FilmsListSchema>
 
-export const GenresShema = z.array(z.string())
+export const GenresSchema = z.array(z.string())
 
-export type Genres = z.infer<typeof GenresShema>
+export type Genres = z.infer<typeof GenresSchema>
 
 export function fetchRandomFilm(): Promise<Film> {
     return fetch('https://cinemaguide.skillbox.cc/movie/random')
         .then((response) => response.json())
-        .then((data) => FilmShema.parse(data))
+        .then((data) => FilmSchema.parse(data))
 }
 
 export function fetchTop10Films(): Promise<FilmsList> {
     return fetch('https://cinemaguide.skillbox.cc/movie/top10')
         .then((response) => response.json())
-        .then((data) => FilmsListShema.parse(data))
+        .then((data) => FilmsListSchema.parse(data))
 }
 
 export function fetchFilmId(movieId: number): Promise<Film> {
     return fetch(`https://cinemaguide.skillbox.cc/movie/${movieId}`)
         .then((response) => response.json())
-        .then((data) => FilmShema.parse(data))
+        .then((data) => FilmSchema.parse(data))
 }
 
 export function fetchGenresFilms(): Promise<Genres> {
     return fetch(`https://cinemaguide.skillbox.cc/movie/genres`)
         .then((response) => response.json())
-        .then((data) => GenresShema.parse(data))
+        .then((data) => GenresSchema.parse(data))
 }
 
 export function fetchFilmsbyFilter(genre: string, count: number, title: string, page: number): Promise<FilmsList> {
     return fetch(`https://cinemaguide.skillbox.cc/movie?count=${count}&page=${page}&title=${title}&genre=${genre}`)
-        .then((responce) => responce.json())
-        .then((data) => FilmsListShema.parse(data))
+        .then((response) => response.json())
+        .then((data) => FilmsListSchema.parse(data))
 }
 
 
@@ -80,8 +79,8 @@ export function fetchFavoritesFilms(): Promise<FilmsList> {
             "Content-Type": "application/json",
         },
     })
-        .then((responce) => responce.json())
-        .then((data) => FilmsListShema.parse(data))
+        .then((response) => response.json())
+        .then((data) => FilmsListSchema.parse(data))
 }
 
 
@@ -93,5 +92,5 @@ export function fetchDeleteFavoritesFilms(id: number): Promise<void> {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({ id })
-    }).then(validateResponce).then(() => undefined)
+    }).then(validateResponse).then(() => undefined)
 } 

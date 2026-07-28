@@ -4,7 +4,7 @@ import { fetchGenresFilms } from '../../api/Films'
 import { queryClient } from '../../api/QueryClient'
 import { Loader } from '../../components/Loader/Loader'
 import GenreCard from '../../components/GenreCard/GenreCard'
-import Button from '../../ui/Button/Button'
+import { QueryError } from '../../components/QueryError/QueryError'
 
 const GenresPage = () => {
 
@@ -33,12 +33,7 @@ const GenresPage = () => {
                 </section>
             )
         case "error":
-            return (
-                <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', gap: '20px' }}>
-                    <span style={{ fontSize: '24px', color: '#ffffff' }}>Ошибка загрузки</span>
-                    <Button className="btn btn--error" onClick={genresQuery.refetch}>Повторить попытку</Button>
-                </div>
-            )
+            return <QueryError onRetry={genresQuery.refetch} />
 
     }
 }

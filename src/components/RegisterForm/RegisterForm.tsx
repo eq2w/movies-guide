@@ -46,7 +46,7 @@ export const RegisterForm = ({ onSuccess, onClick }: TProps) => {
         if (registerMutation.isSuccess) {
             onSuccess()
         }
-    })
+    },[registerMutation.isSuccess])
 
     if (registerMutation.isSuccess) {
         return (

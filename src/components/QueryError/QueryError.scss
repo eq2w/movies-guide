@@ -1,0 +1,16 @@
+.query-error {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+
+    &--compact &__text {
+        font-size: 18px;
+
+    }
+
+    &__text {
+        font-size: 24px;
+        color: #ffffff;
+    }
+}

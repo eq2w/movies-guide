@@ -13,14 +13,14 @@ import type { RootState } from "../../store";
 
 export const AuthForm = () => {
     const authOpen = useSelector((state: RootState) => state.authWindow)
-    const [authType, setAuthType] = useState<string>("register");
+    const [authType, setAuthType] = useState<string>("auth");
     const [successRegister, setSuccessRegister] = useState<boolean>(false)
 
     const dispatch = useDispatch()
 
     const handleClick = () => {
         setAuthType((prevState) =>
-            prevState === "register" ? "auth" : "register",
+            prevState === "auth" ? "register" : "auth",
         );
         setSuccessRegister(false)
     };
@@ -30,7 +30,7 @@ export const AuthForm = () => {
     }
     const handleAuthClose = () => {
         dispatch(closeAuth())
-        setAuthType('register')
+        setAuthType('auth')
     }
     if (!authOpen) return null
 
@@ -38,13 +38,13 @@ export const AuthForm = () => {
         <div className="auth-form">
             <div className="auth-form__wrapper">
                 <SvgIcon className='auth-form__icon' icon={IconLogo} width={157} height={35} />
-                {authType === "auth" ? <RegisterForm onSuccess={handleRegisterSuccess} onClick={handleClick} /> : <LoginForm onSuccess={handleAuthClose} />}
+                {authType === "auth" ? <LoginForm onSuccess={handleAuthClose} /> : <RegisterForm onSuccess={handleRegisterSuccess} onClick={handleClick} />}
 
 
                 {successRegister === true ?
                     <></> :
                     <Button className="  btn auth-form__button btn--bg-transparent" onClick={handleClick} type="button">
-                        {authType === "auth" ? "У меня есть пароль" : "Регистрация"}
+                        {authType === "auth" ? "Регистрация" : "У меня есть пароль"}
                     </Button>
                 }
 
